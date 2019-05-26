@@ -1,0 +1,17 @@
+{
+    "name": "TSKTContainerEditor",
+    "references": [
+        "GUID:f09ae09e65b1a3c42b7b618a95d1df6c"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
