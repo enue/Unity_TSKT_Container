@@ -24,7 +24,14 @@ namespace TSKT
 
         public UnlimitedArray2(int minX, int minY, int width, int height)
         {
-            array = new T[width, height];
+            if (width == 0 || height == 0)
+            {
+                array = null;
+            }
+            else
+            {
+                array = new T[width, height];
+            }
             Min = new Vector2Int(minX, minY);
             Size = new Vector2Int(width, height);
         }
@@ -33,7 +40,7 @@ namespace TSKT
         {
             if (source.Count == 0)
             {
-                array = new T[0, 0];
+                array = null;
                 Min = new Vector2Int(0, 0);
                 Size = new Vector2Int(0, 0);
             }
@@ -92,6 +99,10 @@ namespace TSKT
 
         public bool Contains(int x, int y)
         {
+            if (array == null)
+            {
+                return false;
+            }
             return x >= MinX
                 && y >= MinY
                 && x <= MaxX
@@ -103,7 +114,7 @@ namespace TSKT
             EnsureCapacity(new RectInt(x, y, 0, 0));
         }
 
-        void EnsureCapacity(RectInt rect)
+        public void EnsureCapacity(RectInt rect)
         {
             var oldMin = Min;
             var shouldReplace = false;
@@ -137,7 +148,10 @@ namespace TSKT
             {
                 var oldArray = array;
                 array = new T[Width, Height];
-                Copy(oldMin, oldArray, Min, array);
+                if (oldArray != null)
+                {
+                    Copy(oldMin, oldArray, Min, array);
+                }
             }
         }
 
