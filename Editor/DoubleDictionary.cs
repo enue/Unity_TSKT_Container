@@ -41,6 +41,13 @@ namespace TSKT.Tests
             Assert.AreEqual((1, 0, "fuga"), list[1]);
             Assert.AreEqual((1, 1, "piyo"), list[2]);
         }
+        [Test]
+        public void Clear()
+        {
+            var dict = Sample;
+            dict.Clear();
+            Assert.AreEqual(0, dict.Count());
+        }
 
         DoubleDictionary<int, int, string> Sample
         {

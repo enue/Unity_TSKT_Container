@@ -30,6 +30,11 @@ namespace TSKT
             dict.Add(key2, value);
         }
 
+        public void Clear()
+        {
+            dictionary.Clear();
+        }
+
         public IEnumerator<(Key1 key1, Key2 key2, Value value)> GetEnumerator()
         {
             return GetEnumeratorInternal();
