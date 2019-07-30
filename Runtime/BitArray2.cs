@@ -112,10 +112,10 @@ namespace TSKT
                 return;
             }
 
-            UnityEngine.Assertions.Assert.AreEqual(width, src.width, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(height, src.height, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetX, src.offsetX, "boardのoffsetが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetY, src.offsetY, "boardのoffsetが一致しません");
+            Debug.Assert(width == src.width, "boardのサイズが一致しません");
+            Debug.Assert(height == src.height, "boardのサイズが一致しません");
+            Debug.Assert(offsetX == src.offsetX, "boardのoffsetが一致しません");
+            Debug.Assert(offsetY == src.offsetY, "boardのoffsetが一致しません");
 
             bitArray.And(src.bitArray);
         }
@@ -127,10 +127,10 @@ namespace TSKT
                 return;
             }
 
-            UnityEngine.Assertions.Assert.AreEqual(width, src.width, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(height, src.height, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetX, src.offsetX, "boardのoffsetが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetY, src.offsetY, "boardのoffsetが一致しません");
+            Debug.Assert(width == src.width, "boardのサイズが一致しません");
+            Debug.Assert(height == src.height, "boardのサイズが一致しません");
+            Debug.Assert(offsetX == src.offsetX, "boardのoffsetが一致しません");
+            Debug.Assert(offsetY == src.offsetY, "boardのoffsetが一致しません");
 
             bitArray.Or(src.bitArray);
         }
@@ -142,10 +142,10 @@ namespace TSKT
                 return;
             }
 
-            UnityEngine.Assertions.Assert.AreEqual(width, src.width, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(height, src.height, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetX, src.offsetX, "boardのoffsetが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetY, src.offsetY, "boardのoffsetが一致しません");
+            Debug.Assert(width == src.width, "boardのサイズが一致しません");
+            Debug.Assert(height == src.height, "boardのサイズが一致しません");
+            Debug.Assert(offsetX == src.offsetX, "boardのoffsetが一致しません");
+            Debug.Assert(offsetY == src.offsetY, "boardのoffsetが一致しません");
 
             bitArray.Xor(src.bitArray);
         }
@@ -161,10 +161,10 @@ namespace TSKT
                 return;
             }
 
-            UnityEngine.Assertions.Assert.AreEqual(width, src.width, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(height, src.height, "boardのサイズが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetX, src.offsetX, "boardのoffsetが一致しません");
-            UnityEngine.Assertions.Assert.AreEqual(offsetY, src.offsetY, "boardのoffsetが一致しません");
+            Debug.Assert(width == src.width, "boardのサイズが一致しません");
+            Debug.Assert(height == src.height, "boardのサイズが一致しません");
+            Debug.Assert(offsetX == src.offsetX, "boardのoffsetが一致しません");
+            Debug.Assert(offsetY == src.offsetY, "boardのoffsetが一致しません");
 
             // expect
             // true, true -> false
@@ -203,10 +203,10 @@ namespace TSKT
                 }
             }
 
-            UnityEngine.Assertions.Assert.IsTrue(x - offsetX >= 0, "out of range " + x.ToString());
-            UnityEngine.Assertions.Assert.IsTrue(y - offsetY >= 0, "out of range " + y.ToString());
-            UnityEngine.Assertions.Assert.IsTrue(x - offsetX < width, "out of range " + x.ToString());
-            UnityEngine.Assertions.Assert.IsTrue(y - offsetY < height, "out of range " + y.ToString());
+            Debug.Assert(x - offsetX >= 0, "out of range " + x.ToString());
+            Debug.Assert(y - offsetY >= 0, "out of range " + y.ToString());
+            Debug.Assert(x - offsetX < width, "out of range " + x.ToString());
+            Debug.Assert(y - offsetY < height, "out of range " + y.ToString());
             bitArray.Set((x - offsetX) * height + (y - offsetY), value);
         }
 

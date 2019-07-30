@@ -33,14 +33,14 @@ namespace TSKT
         {
             get
             {
-                UnityEngine.Assertions.Assert.IsTrue(index >= 0);
-                UnityEngine.Assertions.Assert.IsTrue(index < Count);
+                Debug.Assert(index >= 0);
+                Debug.Assert(index < Count);
                 return array[index];
             }
             set
             {
-                UnityEngine.Assertions.Assert.IsTrue(index >= 0);
-                UnityEngine.Assertions.Assert.IsTrue(index < Count);
+                Debug.Assert(index >= 0);
+                Debug.Assert(index < Count);
                 array[index] = value;
             }
         }

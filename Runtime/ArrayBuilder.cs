@@ -11,7 +11,7 @@ namespace TSKT
         {
             get
             {
-                UnityEngine.Assertions.Assert.AreEqual(array.Length, Length);
+                Debug.Assert(Length == array.Length);
                 return array;
             }
         }
