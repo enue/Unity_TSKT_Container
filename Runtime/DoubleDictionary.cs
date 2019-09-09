@@ -63,7 +63,13 @@ namespace TSKT
         {
             get
             {
-                return dictionary.Values.SelectMany(_ => _.Values);
+                foreach (var it in dictionary)
+                {
+                    foreach (var pair in it.Value)
+                    {
+                        yield return pair.Value;
+                    }
+                }
             }
         }
 
