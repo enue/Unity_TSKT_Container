@@ -72,6 +72,19 @@ namespace TSKT
                 }
             }
         }
+        public int Count
+        {
+            get
+            {
+                var result = 0;
+                foreach (var it in dictionary)
+                {
+                    result += it.Value.Count;
+                }
+                return result;
+            }
+        }
+        public int FirstKeyCount => dictionary.Count;
 
         public Value this[Key1 key1, Key2 key2]
         {
