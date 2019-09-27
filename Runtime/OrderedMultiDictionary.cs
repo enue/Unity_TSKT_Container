@@ -9,7 +9,17 @@ namespace TSKT
     public class OrderedMultiDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
         where K : IComparable<K>
     {
-        readonly SortedList<K, List<V>> list = new SortedList<K, List<V>>();
+        readonly SortedList<K, List<V>> list;
+
+        public OrderedMultiDictionary()
+        {
+            list = new SortedList<K, List<V>>();
+        }
+
+        public OrderedMultiDictionary(IComparer<K> comparer)
+        {
+            list = new SortedList<K, List<V>>(comparer);
+        }
 
         public void Add(K key, V value)
         {
@@ -106,7 +116,15 @@ namespace TSKT
             {
                 int median = low + ((high - low) >> 1);
 
-                var c = keys[median].CompareTo(k);
+                int c;
+                if (list.Comparer == null)
+                {
+                    c = keys[median].CompareTo(k);
+                }
+                else
+                {
+                    c = list.Comparer.Compare(keys[median], k);
+                }
                 if (c == 0)
                 {
                     return median;

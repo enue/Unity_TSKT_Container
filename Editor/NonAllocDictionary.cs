@@ -39,6 +39,29 @@ namespace TSKT.Tests
                 Assert.AreEqual(values[i], dict[keys[i]]);
             }
         }
+
+        [Test]
+        public void Comparer()
+        {
+            var dict = new Dictionary<string, float>();
+            for (int i = 0; i < 1000; ++i)
+            {
+                var k =Random.Range(0, 1000).ToString();
+                var v = Random.value;
+                dict[k] = v;
+            }
+
+            var ordered = dict.OrderBy(_ => _.Key, System.StringComparer.Ordinal).ToArray();
+            var container = new NonAllocDictionary<string, float>(
+                ordered.Select(_ => _.Key).ToArray(),
+                ordered.Select(_ => _.Value).ToArray(),
+                System.StringComparer.Ordinal);
+
+            foreach(var it in dict)
+            {
+                Assert.AreEqual(it.Value, container[it.Key]);
+            }
+        }
     }
 }
 

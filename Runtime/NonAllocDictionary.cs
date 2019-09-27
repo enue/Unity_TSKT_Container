@@ -10,11 +10,20 @@ namespace TSKT
     {
         readonly K[] keys;
         readonly V[] values;
+        readonly IComparer<K> comparer;
 
         public NonAllocDictionary(K[] sortedKeys, V[] values)
         {
             keys = sortedKeys;
             this.values = values;
+            comparer = null;
+        }
+
+        public NonAllocDictionary(K[] sortedKeys, V[] values, IComparer<K> comparer)
+        {
+            keys = sortedKeys;
+            this.values = values;
+            this.comparer = comparer;
         }
 
         public bool TryGetValue(K key, out V result)
@@ -24,7 +33,15 @@ namespace TSKT
                 result = default;
                 return false;
             }
-            var index = Array.BinarySearch(keys, key);
+            int index;
+            if (comparer == null)
+            {
+                index = Array.BinarySearch(keys, key);
+            }
+            else
+            {
+                index = Array.BinarySearch(keys, key, comparer);
+            }
             if (index >= 0)
             {
                 result = values[index];
@@ -48,7 +65,15 @@ namespace TSKT
         {
             get
             {
-                var index = System.Array.BinarySearch(keys, key);
+                int index;
+                if (comparer == null)
+                {
+                    index = Array.BinarySearch(keys, key);
+                }
+                else
+                {
+                    index = Array.BinarySearch(keys, key, comparer);
+                }
                 return values[index];
             }
         }

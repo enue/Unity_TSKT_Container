@@ -11,6 +11,7 @@ namespace TSKT
     {
         readonly List<K> keys;
         readonly List<V> values;
+        public IComparer<K> Comparer { get; set; }
 
         public OrderedDictionary()
         {
@@ -28,11 +29,20 @@ namespace TSKT
         {
             keys = src.keys.ToList();
             values = src.values.ToList();
+            Comparer = src.Comparer;
         }
 
         public bool TryGetValue(K key, out V result)
         {
-            var index = keys.BinarySearch(key);
+            int index;
+            if (Comparer == null)
+            {
+                index = keys.BinarySearch(key);
+            }
+            else
+            {
+                index = keys.BinarySearch(key, Comparer);
+            }
             if (index >= 0)
             {
                 result = values[index];
@@ -55,7 +65,15 @@ namespace TSKT
             }
             set
             {
-                var index = keys.BinarySearch(key);
+                int index;
+                if (Comparer == null)
+                {
+                    index = keys.BinarySearch(key);
+                }
+                else
+                {
+                    index = keys.BinarySearch(key, Comparer);
+                }
                 if (index >= 0)
                 {
                     values[index] = value;
@@ -69,7 +87,15 @@ namespace TSKT
 
         public bool Remove(K key)
         {
-            var index = keys.BinarySearch(key);
+            int index;
+            if (Comparer == null)
+            {
+                index = keys.BinarySearch(key);
+            }
+            else
+            {
+                index = keys.BinarySearch(key, Comparer);
+            }
             if (index >= 0)
             {
                 keys.RemoveAt(index);

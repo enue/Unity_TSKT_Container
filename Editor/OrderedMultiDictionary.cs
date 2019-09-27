@@ -21,8 +21,28 @@ namespace TSKT.Tests
 
             Assert.False(container.Remove("piyo"));
             Assert.True(container.Remove("hoge"));
-
         }
+
+        [Test]
+        public void Comparer()
+        {
+            var keys = new List<string>();
+            for(int i=0; i<1000; ++i)
+            {
+                keys.Add(Random.Range(0, 10).ToString());
+            }
+
+            var container = new OrderedMultiDictionary<string, float>(System.StringComparer.Ordinal);
+            foreach(var it in keys)
+            {
+                container.Add(it, 0f);
+            }
+
+            Assert.AreEqual(
+                keys.OrderBy(_ => _, System.StringComparer.Ordinal).ToArray(),
+                container.Select(_ => _.Key).ToArray());
+        }
+
         [Test]
         [TestCase(-0.5f, 1f)]
         [TestCase(-0.5f, 1.5f)]
