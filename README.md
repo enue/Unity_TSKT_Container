@@ -1,11 +1,7 @@
-# Unty_TSKT_Container
+# install
 
-Packages/manifest.json
+Unity Package Manager
 
-```json
-{
-  "dependencies": {
-    "com.github.enue.tskt_container": "https://github.com/enue/Unity_TSKT_Container.git",
-  }
-}
-```
+add package from git url
+
++ `https://github.com/enue/Unity_TSKT_Container.git?path=Assets/Package`
