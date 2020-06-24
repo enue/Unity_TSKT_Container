@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TSKT
 {
-    public class DirectionMap<T>
+    public class DirectionMap<T> : IEnumerable<KeyValuePair<Vector2Int, T>>
     {
         public T Right { get; set; }
         public T Left { get; set; }
@@ -85,6 +85,17 @@ namespace TSKT
             }
         }
 
+        public IEnumerator<KeyValuePair<Vector2Int, T>> GetEnumerator()
+        {
+            yield return new KeyValuePair<Vector2Int, T>(Vector2Int.right, Right);
+            yield return new KeyValuePair<Vector2Int, T>(Vector2Int.left, Left);
+            yield return new KeyValuePair<Vector2Int, T>(Vector2Int.up, Up);
+            yield return new KeyValuePair<Vector2Int, T>(Vector2Int.down, Down);
+        }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
 }

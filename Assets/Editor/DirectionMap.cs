@@ -24,6 +24,21 @@ namespace TSKT.Tests
             Assert.AreEqual(default(string), map[0, 0]);
             Assert.Catch<System.ArgumentOutOfRangeException>(() => map[0, 0] = "bar");
         }
+
+        [Test]
+        public void Enumerable()
+        {
+            var map = new DirectionMap<string>();
+            map[0, 1] = "u";
+            map[0, -1] = "d";
+            map[1, 0] = "r";
+            map[-1, 0] = "l";
+
+            foreach (var it in map)
+            {
+                Assert.AreEqual(map[it.Key], it.Value);
+            }
+        }
     }
 }
 
