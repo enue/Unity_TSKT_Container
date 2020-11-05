@@ -51,6 +51,21 @@ namespace TSKT.Tests
                 Assert.AreEqual(it.Value, container[it.Key]);
             }
         }
+        [Test]
+        public void FromDictionary()
+        {
+            var dict = new Dictionary<string, float>()
+            {
+                {"a", 0f},
+                {"c", 2f},
+                {"b", 1f},
+            };
+
+            var d = new SerializableOrderedDictionary<string, float>(dict);
+            var d2 = d.ToDictionary(_ => _.Key, _ => _.Value);
+
+            Assert.AreEqual(dict, d2);
+        }
 
         public void Performance()
         {

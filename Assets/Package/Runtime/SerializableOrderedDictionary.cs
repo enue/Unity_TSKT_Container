@@ -29,6 +29,16 @@ namespace TSKT
             this.values.AddRange(values);
         }
 
+        public SerializableOrderedDictionary(Dictionary<K, V> dictionary)
+        {
+            keys.Capacity = dictionary.Count;
+            values.Capacity = dictionary.Count;
+            foreach (var it in dictionary)
+            {
+                Add(it.Key, it.Value);
+            }
+        }
+
         int GetIndex(K key)
         {
             return keys.BinarySearch(key);
