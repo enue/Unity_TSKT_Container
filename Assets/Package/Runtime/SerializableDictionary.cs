@@ -7,13 +7,13 @@ using System;
 namespace TSKT
 {
     [System.Serializable]
-    public class SerializableDictionary<K, V>
+    public struct SerializableDictionary<K, V>
     {
         [SerializeField]
-        K[] keys = default;
+        K[] keys;
 
         [SerializeField]
-        V[] values = default;
+        V[] values;
 
         public SerializableDictionary(Dictionary<K, V> source)
         {
