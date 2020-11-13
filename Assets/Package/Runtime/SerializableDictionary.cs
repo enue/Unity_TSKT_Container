@@ -7,7 +7,7 @@ using System;
 namespace TSKT
 {
     [System.Serializable]
-    public struct SerializableDictionary<K, V>
+    public struct SerializableDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
     {
         [SerializeField]
         K[] keys;
@@ -29,6 +29,30 @@ namespace TSKT
                 result.Add(keys[i], values[i]);
             }
             return result;
+        }
+
+        IEnumerator<KeyValuePair<K, V>> IEnumerable<KeyValuePair<K, V>>.GetEnumerator()
+        {
+            if (keys == null)
+            {
+                yield break;
+            }
+            for (int i = 0; i < keys.Length; ++i)
+            {
+                yield return new KeyValuePair<K, V>(keys[i], values[i]);
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            if (keys == null)
+            {
+                yield break;
+            }
+            for (int i = 0; i < keys.Length; ++i)
+            {
+                yield return new KeyValuePair<K, V>(keys[i], values[i]);
+            }
         }
     }
 }
