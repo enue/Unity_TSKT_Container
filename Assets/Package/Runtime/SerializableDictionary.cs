@@ -9,11 +9,8 @@ namespace TSKT
     [System.Serializable]
     public struct SerializableDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
     {
-        [SerializeField]
-        K[] keys;
-
-        [SerializeField]
-        V[] values;
+        public K[] keys;
+        public V[] values;
 
         public SerializableDictionary(Dictionary<K, V> source)
         {
