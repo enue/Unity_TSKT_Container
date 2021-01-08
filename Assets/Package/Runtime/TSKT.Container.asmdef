@@ -1,3 +1,22 @@
-﻿{
-	"name": "TSKTContainer"
+{
+    "name": "TSKTContainer",
+    "rootNamespace": "",
+    "references": [
+        "UniRx"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.neuecc.unirx",
+            "expression": "",
+            "define": "TSKT_CONTAINER_SUPPORT_UNIRX"
+        }
+    ],
+    "noEngineReferences": false
 }
