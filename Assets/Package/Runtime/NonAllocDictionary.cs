@@ -26,7 +26,7 @@ namespace TSKT
             this.comparer = comparer;
         }
 
-        public bool TryGetValue(K key, out V result)
+        readonly public bool TryGetValue(K key, out V result)
         {
             if (keys == null)
             {
@@ -52,7 +52,7 @@ namespace TSKT
             return false;
         }
 
-        public V TryGetValue(K key, V defaultValue = default)
+        readonly public V TryGetValue(K key, V defaultValue = default)
         {
             if (TryGetValue(key, out var result))
             {
@@ -61,7 +61,7 @@ namespace TSKT
             return defaultValue;
         }
 
-        public V this[K key]
+        readonly public V this[K key]
         {
             get
             {
@@ -78,15 +78,9 @@ namespace TSKT
             }
         }
 
-        public int Count
-        {
-            get
-            {
-                return keys.Length;
-            }
-        }
+        readonly public int Count => keys.Length;
 
-        IEnumerator<KeyValuePair<K, V>> IEnumerable<KeyValuePair<K, V>>.GetEnumerator()
+        readonly IEnumerator<KeyValuePair<K, V>> IEnumerable<KeyValuePair<K, V>>.GetEnumerator()
         {
             for(int i=0; i<keys.Length; ++i)
             {
@@ -94,7 +88,7 @@ namespace TSKT
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        readonly IEnumerator IEnumerable.GetEnumerator()
         {
             for (int i = 0; i < keys.Length; ++i)
             {

@@ -7,7 +7,7 @@ namespace TSKT
     public struct ArrayBuilder<T> : IEnumerable<T>
     {
         readonly T[] array;
-        public T[] Array
+        readonly public T[] Array
         {
             get
             {
@@ -16,8 +16,8 @@ namespace TSKT
             }
         }
 
-        public int Capacity => array.Length;
-        public int Length { get; private set; }
+        readonly public int Capacity => array.Length;
+        public int Length { readonly get; private set; }
 
         public ArrayBuilder(int count)
         {
@@ -25,13 +25,13 @@ namespace TSKT
             Length = 0;
         }
 
-        public void Add(T value)
+        public void Add(in T value)
         {
             array[Length] = value;
             ++Length;
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        readonly IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
             for (int i = 0; i < Length; ++i)
             {
@@ -39,7 +39,7 @@ namespace TSKT
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        readonly IEnumerator IEnumerable.GetEnumerator()
         {
             for (int i = 0; i < Length; ++i)
             {

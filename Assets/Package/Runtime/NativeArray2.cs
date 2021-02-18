@@ -10,8 +10,8 @@ namespace TSKT
         where T : struct
     {
         NativeArray<T> nativeArray;
-        public int Width { get; }
-        public int Height { get; }
+        readonly public int Width { get; }
+        readonly public int Height { get; }
 
         public NativeArray2(int w, int h, Allocator allocator)
         {
@@ -22,7 +22,7 @@ namespace TSKT
 
         public T this[int x, int y]
         {
-            get
+            readonly get
             {
                 if (x < 0 || y < 0 || x >= Width || y >= Height)
                 {
@@ -40,12 +40,12 @@ namespace TSKT
             }
         }
 
-        public void Dispose()
+        readonly public void Dispose()
         {
             nativeArray.Dispose();
         }
 
-        public IEnumerator<KeyValuePair<Vector2Int, T>> GetEnumerator()
+        readonly public IEnumerator<KeyValuePair<Vector2Int, T>> GetEnumerator()
         {
             for(int i=0; i<nativeArray.Length; ++i)
             {
@@ -55,7 +55,7 @@ namespace TSKT
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        readonly IEnumerator IEnumerable.GetEnumerator()
         {
             for (int i = 0; i < nativeArray.Length; ++i)
             {

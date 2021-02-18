@@ -18,7 +18,7 @@ namespace TSKT
             values = source.Values.ToArray();
         }
 
-        public Dictionary<K, V> ToDictionary()
+        readonly public Dictionary<K, V> ToDictionary()
         {
             var result = new Dictionary<K, V>(keys.Length);
             for (int i = 0; i < keys.Length; ++i)
@@ -28,7 +28,7 @@ namespace TSKT
             return result;
         }
 
-        IEnumerator<KeyValuePair<K, V>> IEnumerable<KeyValuePair<K, V>>.GetEnumerator()
+        readonly IEnumerator<KeyValuePair<K, V>> IEnumerable<KeyValuePair<K, V>>.GetEnumerator()
         {
             if (keys == null)
             {
@@ -40,7 +40,7 @@ namespace TSKT
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        readonly IEnumerator IEnumerable.GetEnumerator()
         {
             if (keys == null)
             {
