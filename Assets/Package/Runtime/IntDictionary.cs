@@ -63,6 +63,7 @@ namespace TSKT
         }
 
         public Dictionary<T, int>.KeyCollection Keys => dictionary.Keys;
+        public Dictionary<T, int>.ValueCollection Values => dictionary.Values;
 
         public int Count => dictionary.Count;
 
