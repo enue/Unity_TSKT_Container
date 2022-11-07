@@ -8,17 +8,17 @@ namespace TSKT
 {
     public readonly struct ArrayBuilder<T>
     {
-        public readonly ArrayBufferWriter<T> memory;
+        public readonly ArrayBufferWriter<T> writer;
 
         public ArrayBuilder(int count)
         {
-            memory = new(count);
+            writer = new(count);
         }
 
         public void Add(in T value)
         {
-            memory.GetSpan(1)[0] = value;
-            memory.Advance(1);
+            writer.GetSpan(1)[0] = value;
+            writer.Advance(1);
         }
     }
 }

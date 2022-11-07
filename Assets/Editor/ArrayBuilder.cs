@@ -16,7 +16,7 @@ namespace TSKT.Tests
             builder.Add(original[0]);
             builder.Add(original[1]);
             builder.Add(original[2]);
-            Assert.AreEqual(original, builder.memory.WrittenSpan.ToArray());
+            Assert.AreEqual(original, builder.writer.WrittenSpan.ToArray());
         }
     }
 }
