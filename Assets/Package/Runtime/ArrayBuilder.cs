@@ -12,7 +12,14 @@ namespace TSKT
 
         public ArrayBuilder(int count)
         {
-            writer = new(count);
+            if (count == 0)
+            {
+                writer = new();
+            }
+            else
+            {
+                writer = new(count);
+            }
         }
 
         public void Add(in T value)
