@@ -13,7 +13,8 @@ namespace TSKT.Tests
         public void Test()
         {
             var original = new[] { "hoge", "fuga", "piyo" };
-            var builder = new MemoryBuilder<string>(original.Length);
+            using var buffer = System.Buffers.MemoryPool<string>.Shared.Rent(original.Length);
+            var builder = new MemoryBuilder<string>(buffer.Memory);
             builder.Add(original[0]);
             builder.Add(original[1]);
             builder.Add(original[2]);
