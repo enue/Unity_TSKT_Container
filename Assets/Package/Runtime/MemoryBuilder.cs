@@ -6,28 +6,22 @@ using UnityEngine;
 
 namespace TSKT
 {
-    public struct MemoryBuilder<T> : System.IDisposable
+    public struct MemoryBuilder<T>
     {
-        readonly IMemoryOwner<T> owner;
+        readonly System.Memory<T> memory;
         int index;
+        public System.Memory<T> Memory => memory[..index];
 
-        public MemoryBuilder(int capacity)
+        public MemoryBuilder(System.Memory<T> memory)
         {
-            owner = MemoryPool<T>.Shared.Rent(capacity);
+            this.memory = memory;
             index = 0;
         }
 
         public void Add(in T value)
         {
-            owner.Memory.Span[index] = value;
+            memory.Span[index] = value;
             ++index;
-        }
-
-        public System.Memory<T> Memory => owner.Memory[..index];
-
-        public void Dispose()
-        {
-            owner.Dispose();
         }
     }
 }
