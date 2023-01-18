@@ -191,3 +191,14 @@ Update Mode: updateDependencies
 
 The following packages were updated:
   com.unity.timeline from version 1.7.1 to 1.7.2
+
+=== Wed Jan 18 10:00:18 2023
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ai.navigation from version 1.1.0-pre.1 to 1.1.1
+  com.unity.collab-proxy from version 1.17.6 to 1.17.7
+  com.unity.ide.rider from version 3.0.16 to 3.0.17
+  com.unity.ide.visualstudio from version 2.0.16 to 2.0.17
