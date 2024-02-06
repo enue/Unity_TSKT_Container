@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#nullable enable
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace TSKT
     {
         readonly List<K> keys;
         readonly List<V> values;
-        public IComparer<K> Comparer { get; set; }
+        public IComparer<K>? Comparer { get; set; }
 
         public OrderedDictionary()
         {

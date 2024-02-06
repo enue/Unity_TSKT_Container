@@ -1,3 +1,4 @@
+#nullable enable
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UniRx;
 
 namespace TSKT
 {
-    public static class ReactiveDictionaryExtentions
+    public static class ReactiveDictionaryExtensions
     {
         public static ReadOnlyReactiveProperty<V> ObserveValue<K, V>(this ReactiveDictionary<K, V> dict, K key, V defaultValue = default)
         {
