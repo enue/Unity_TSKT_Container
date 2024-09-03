@@ -13,6 +13,12 @@ namespace TSKT
         public K[] keys;
         public V[] values;
 
+        public SerializableDictionary(IEnumerable<K> keys, IEnumerable<V> values)
+        {
+            this.keys = keys.ToArray();
+            this.values = values.ToArray();
+        }
+
         public SerializableDictionary(Dictionary<K, V> source)
         {
             keys = source.Keys.ToArray();
