@@ -7,11 +7,15 @@ using System;
 
 namespace TSKT
 {
+    [System.Serializable]
     public class OrderedDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
         where K : IComparable
     {
-        readonly List<K> keys;
-        readonly List<V> values;
+        [SerializeField]
+        List<K> keys;
+
+        [SerializeField]
+        List<V> values;
         public IComparer<K>? Comparer { get; set; }
 
         public OrderedDictionary()
