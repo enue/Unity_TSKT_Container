@@ -27,6 +27,10 @@ namespace TSKT
 
         readonly public Dictionary<K, V> ToDictionary()
         {
+            if (keys == null)
+            {
+                return new Dictionary<K, V>();
+            }
             var result = new Dictionary<K, V>(keys.Length);
             for (int i = 0; i < keys.Length; ++i)
             {
