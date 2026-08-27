@@ -7,6 +7,7 @@ using System;
 
 namespace TSKT
 {
+    [System.Obsolete]
     [System.Serializable]
     public class SerializableOrderedDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
     {
